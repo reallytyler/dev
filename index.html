@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 
@@ -8,33 +7,33 @@
   <meta name="theme-color" content="#050505">
   <meta name="description" content="Tyler - Half Stack Developer specializing in Web and Minecraft solutions.">
 
-  <title>Tyler // Portfolio</title>
+  <title>Tyler // Dev</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&family=Space+Grotesk:wght@300;500;700&family=Poppins:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
       --bg: #050505;
-      --card-bg: #111111;
+      --card-bg: #0c0c0c;
       --accent: #bc77ff; 
-      --accent-glow: rgba(188, 119, 255, 0.4);
+      --accent-glow: rgba(188, 119, 255, 0.35);
       --text-white: #ffffff;
-      --border: rgba(255, 255, 255, 0.12);
-      --nav-bg: rgba(5, 5, 5, 0.9);
+      --border: rgba(255, 255, 255, 0.08);
+      --nav-bg: rgba(5, 5, 5, 0.8);
     }
 
     [data-theme="light"] {
-      --bg: #f8fafc;
+      --bg: #fdfdfd;
       --card-bg: #ffffff;
       --accent: #7c3aed;
-      --accent-glow: rgba(124, 58, 237, 0.2);
-      --text-white: #0f172a;
-      --border: rgba(0, 0, 0, 0.1);
-      --nav-bg: rgba(248, 250, 252, 0.9);
+      --accent-glow: rgba(124, 58, 237, 0.1);
+      --text-white: #0a0a0a;
+      --border: rgba(0, 0, 0, 0.08);
+      --nav-bg: rgba(253, 253, 253, 0.8);
     }
 
     body {
@@ -43,109 +42,166 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
       line-height: 1.6;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background-color 0.4s ease, color 0.4s ease;
     }
 
-    /* Enforce Pure White Text Visibility */
-    h1, h2, h3, h4, h5, h6, p, span, div, small, .navbar-brand, .nav-link, .badge { 
-      color: var(--text-white) !important;
-      opacity: 1 !important;
-    }
+    /* Random Poppins Mix */
+    .poppins-mix { font-family: 'Poppins', sans-serif !important; font-style: italic; }
 
-    h1, h2, h3, h4, .navbar-brand { 
+    h1, h2, h3, h4, h5, h6, .navbar-brand { 
       font-family: 'Space Grotesk', sans-serif; 
       font-weight: 700; 
+      color: var(--text-white) !important;
+      letter-spacing: -1px;
+    }
+
+    /* Ambient Background Glow */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -10%; left: 20%; width: 60%; height: 40%;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+      filter: blur(80px);
     }
 
     .navbar {
       background: var(--nav-bg);
-      backdrop-filter: blur(15px);
+      backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
-      padding: 1.2rem 0;
+      padding: 0.8rem 0;
     }
 
     .navbar-brand span { color: var(--accent) !important; }
-    
-    .nav-link { font-weight: 600; transition: 0.3s; }
-    .nav-link:hover { color: var(--accent) !important; }
+    .nav-link { font-weight: 500; font-size: 0.95rem; transition: 0.2s; }
+    .nav-link:hover { color: var(--accent) !important; opacity: 1 !important; }
 
     #themeToggle, #themeToggleMobile {
-      background: none;
+      background: var(--card-bg);
       border: 1px solid var(--border);
       color: var(--text-white);
-      padding: 8px 12px;
-      border-radius: 10px;
+      padding: 6px 12px;
+      border-radius: 8px;
       cursor: pointer;
+      transition: 0.2s;
     }
+    #themeToggle:hover { border-color: var(--accent); }
 
-    .hero { padding: 180px 0 100px; background: radial-gradient(circle at 50% -10%, var(--accent-glow) 0%, transparent 60%); }
-    .hero-title { font-size: clamp(3.5rem, 9vw, 5.5rem); line-height: 0.85; margin-bottom: 1.5rem; letter-spacing: -2px; }
+    .hero { padding: 160px 0 80px; }
+    .hero-title { font-size: clamp(3.5rem, 10vw, 6rem); line-height: 0.8; margin-bottom: 1.5rem; }
     .hero-title span { 
-      background: linear-gradient(to bottom right, #ffffff 30%, var(--accent));
+      background: linear-gradient(to bottom right, #ffffff 40%, var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .status-badge {
-      background: var(--accent-glow);
-      border: 1px solid var(--accent);
-      padding: 8px 20px;
+    .lanyard-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
       border-radius: 100px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      width: fit-content;
-      margin: 0 auto 2.5rem;
+      margin-bottom: 2rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8rem;
     }
 
-    .status-dot { width: 10px; height: 10px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 15px #22c55e; }
+    .status-dot-pulse {
+      width: 8px; height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #22c55e;
+      animation: pulse 2s infinite;
+    }
 
+    @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+
+    /* SKILL CARDS */
     .skill-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      padding: 3rem 1.5rem;
-      border-radius: 24px;
+      padding: 2.5rem 1rem;
+      border-radius: 20px;
       text-align: center;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     }
-    .skill-card i { font-size: 4.5rem !important; display: block; margin-bottom: 1.5rem; }
-    .skill-card:hover { border-color: var(--accent); transform: translateY(-12px); box-shadow: 0 20px 40px -15px var(--accent-glow); }
+    .skill-card i { font-size: 4rem !important; margin-bottom: 1rem; transition: 0.3s; }
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-8px); }
+    .skill-card:hover i { transform: scale(1.1); filter: drop-shadow(0 0 15px var(--accent-glow)); }
 
-    .client-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 28px; padding: 28px; height: 100%; transition: 0.3s; }
-    .client-card:hover { border-color: var(--accent); }
+    /* PROJECTS */
+    .client-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+      height: 100%;
+      transition: 0.3s;
+      position: relative;
+    }
+    .client-card:hover { border-color: var(--accent); box-shadow: 0 10px 30px -15px var(--accent-glow); }
 
     .img-wrapper {
-      width: 100%; height: 220px; border-radius: 20px; overflow: hidden; margin-bottom: 24px; border: 1px solid var(--border);
+      width: 100%; height: 210px; border-radius: 16px; overflow: hidden; margin-bottom: 20px; border: 1px solid var(--border);
     }
-    .img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+    .img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; }
+    .client-card:hover .img-wrapper img { transform: scale(1.05); }
+
+    .badge-pill {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 6px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      display: inline-block;
+      margin-bottom: 12px;
+    }
 
     .btn-custom {
       background: var(--text-white);
       color: var(--bg) !important;
-      font-weight: 800;
-      border-radius: 14px;
-      padding: 12px 32px;
-      border: none;
-      transition: 0.3s;
+      font-weight: 700;
+      border-radius: 10px;
+      padding: 10px 24px;
       text-decoration: none;
-      display: inline-block;
+      transition: 0.3s;
+      font-family: 'Space Grotesk', sans-serif;
     }
-    .btn-custom:hover { background: var(--accent); color:       #ffffff !important; transform: scale(1.05); }
+    .btn-custom:hover { background: var(--accent); color: #fff !important; transform: translateX(5px); }
 
     .social-btn {
-      width: 54px; height: 54px; display: flex; align-items: center; justify-content: center; border-radius: 16px; background: var(--card-bg); border: 1px solid var(--border); color: var(--text-white); text-decoration: none; transition: 0.3s;
+      width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: var(--card-bg); border: 1px solid var(--border); transition: 0.3s;
     }
-    .social-btn:hover { background: var(--accent); transform: translateY(-5px); }
+    .social-btn:hover { border-color: var(--accent); transform: rotate(5deg) scale(1.1); color: var(--accent) !important; }
 
-    .testimonial-box { background: var(--card-bg); border: 1px solid var(--border); border-radius: 32px; padding: 40px 30px; margin-bottom: 20px; }
-    .avatar-img { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); }
-
-    .tag { 
-      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; padding: 6px 14px; border-radius: 8px; background: var(--accent-glow); border: 1px solid var(--accent); font-weight: 800; display: inline-block; margin-bottom: 10px;
+    .testimonial-box { 
+      background: var(--card-bg); 
+      border: 1px solid var(--border); 
+      border-radius: 24px; 
+      padding: 35px; 
+      position: relative;
     }
+    .testimonial-box::before { content: "“"; position: absolute; top: 10px; left: 20px; font-size: 4rem; opacity: 0.1; font-family: serif; }
+
+    .stat-box {
+      border: 1px solid var(--border);
+      padding: 15px 30px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .modal-content { background: var(--bg) !important; border: 1px solid var(--border) !important; border-radius: 24px; }
     
-    .stat-number { font-size: 2.8rem; font-weight: 800; }
-    #copyDiscordBtn { cursor: pointer; color: var(--accent); font-size: 1.5rem; }
-    .modal-content { background: var(--card-bg) !important; border: 1px solid var(--border) !important; }
+    #copyToast { font-family: 'Poppins', sans-serif; font-size: 0.7rem; color: var(--accent) !important; font-weight: 700; }
+
+    /* Force visibility */
+    h1, h2, h3, h4, h5, h6, p, span, div, small, .navbar-brand, .nav-link { color: var(--text-white) !important; }
   </style>
 </head>
 
@@ -154,85 +210,71 @@
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
       <a class="navbar-brand" href="https://tyler.ct.ws/dev/">TYLER<span>.</span></a>
-      
-      <div class="d-flex align-items-center d-lg-none ms-auto">
-        <button id="themeToggleMobile" class="me-2"><i class="fas fa-moon"></i></button>
-        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <i class="fas fa-bars text-white"></i>
-        </button>
-      </div>
-
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto gap-lg-4 align-items-center">
-          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="#clients">Work</a></li>
-          <li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactModal">
-              <i class="fab fa-discord me-2" style="color: var(--accent);"></i>Contact
-            </a>
-          </li>
-          <li class="nav-item d-none d-lg-block">
-            <button id="themeToggle"><i class="fas fa-moon"></i></button>
-          </li>
-        </ul>
+      <div class="ms-auto d-flex align-items-center gap-2">
+        <div class="collapse navbar-collapse d-none d-lg-block" id="navbarNav">
+            <ul class="navbar-nav gap-3 me-3">
+              <li><a class="nav-link" href="#skills">Skills</a></li>
+              <li><a class="nav-link" href="#clients">Work</a></li>
+              <li><a class="nav-link" href="#testimonials">Reviews</a></li>
+            </ul>
+        </div>
+        <button id="themeToggleMobile" class="d-lg-none"><i class="fas fa-moon"></i></button>
+        <button id="themeToggle" class="d-none d-lg-block"><i class="fas fa-moon"></i></button>
       </div>
     </div>
   </nav>
 
   <section class="hero text-center" id="home">
     <div class="container">
-      <div class="status-badge d-flex align-items-center gap-2 mx-auto">
-        <div class="status-dot"></div> Available for Commissions
+      <div class="lanyard-status">
+        <div class="status-dot-pulse"></div> 
+        <span class="poppins-mix">Live Status:</span> Online
       </div>
       <h1 class="hero-title">Half Stack<br><span>Developer</span></h1>
-      <p class="fs-4 mx-auto mb-5" style="max-width: 650px;">
-        Building responsive web applications and optimized Minecraft environments with a focus on performance and clean design.
+      <p class="fs-4 mx-auto mb-5 poppins-mix" style="max-width: 650px; opacity: 0.9;">
+        Refining <span style="color: var(--accent)">web aesthetics</span> and engineering reliable Minecraft environments with a focus on code integrity.
       </p>
       
-      <div class="d-flex justify-content-center gap-5 mb-5">
-        <div class="text-center">
+      <div class="d-flex justify-content-center gap-4 mb-5">
+        <div class="stat-box">
           <div class="stat-number">5+</div>
-          <small class="tag" style="background:none; border:none; padding:0;">Projects</small>
+          <small class="poppins-mix" style="font-size: 0.7rem; text-transform: uppercase; color: var(--accent) !important;">Projects</small>
         </div>
-        <div style="width: 2px; background: var(--border);"></div>
-        <div class="text-center">
+        <div class="stat-box">
           <div class="stat-number">2+</div>
-          <small class="tag" style="background:none; border:none; padding:0;">Years Exp</small>
+          <small class="poppins-mix" style="font-size: 0.7rem; text-transform: uppercase; color: var(--accent) !important;">Years Exp</small>
         </div>
       </div>
 
       <div class="d-flex justify-content-center gap-3">
-        <a href="https://github.com/reallytyler" target="_blank" class="social-btn" title="GitHub"><i class="fab fa-github fa-lg"></i></a>
-        <a href="https://codeberg.org/reallytyler" target="_blank" class="social-btn" title="Codeberg"><i class="fas fa-code-branch fa-lg"></i></a>
-        <a href="https://modrinth.com/user/tylerxd" target="_blank" class="social-btn" title="Modrinth">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Modrinth_Logo.webp" style="width:28px" alt="Modrinth">
+        <a href="https://github.com/reallytyler" target="_blank" class="social-btn"><i class="fab fa-github fa-lg"></i></a>
+        <a href="https://codeberg.org/reallytyler" target="_blank" class="social-btn"><i class="fas fa-code-branch fa-lg"></i></a>
+        <a href="https://modrinth.com/user/tylerxd" target="_blank" class="social-btn">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Modrinth_Logo.webp" style="width:22px" alt="Mod">
         </a>
-        <a href="#" class="social-btn" data-bs-toggle="modal" data-bs-target="#contactModal" title="Discord"><i class="fab fa-discord fa-lg"></i></a>
+        <a href="#" class="social-btn" data-bs-toggle="modal" data-bs-target="#contactModal"><i class="fab fa-discord fa-lg"></i></a>
       </div>
     </div>
   </section>
 
   <section id="skills" class="py-5">
     <div class="container py-5">
-      <div class="text-center mb-5">
-        <h2 class="display-5">Technical Expertise</h2>
-      </div>
-      <div class="row g-4 justify-content-center">
+      <h2 class="display-6 mb-5 text-center">Core Stack</h2>
+      <div class="row g-3 justify-content-center">
         <div class="col-6 col-md-4 col-lg-2">
-          <div class="skill-card"><i class="fab fa-html5" style="color:#ff6d00"></i><h6>HTML</h6></div>
+          <div class="skill-card"><i class="fab fa-html5" style="color:#E34F26"></i><h6>HTML</h6></div>
         </div>
         <div class="col-6 col-md-4 col-lg-2">
-          <div class="skill-card"><i class="fab fa-css3-alt" style="color:#039be5"></i><h6>CSS</h6></div>
+          <div class="skill-card"><i class="fab fa-css3-alt" style="color:#1572B6"></i><h6>CSS</h6></div>
         </div>
         <div class="col-6 col-md-4 col-lg-2">
-          <div class="skill-card"><i class="fab fa-js" style="color:#ffd600"></i><h6>JS</h6></div>
+          <div class="skill-card"><i class="fab fa-js" style="color:#F7DF1E"></i><h6>JS</h6></div>
         </div>
         <div class="col-6 col-md-4 col-lg-2">
-          <div class="skill-card"><i class="fab fa-python" style="color: #4b8bbe;"></i><h6>Python</h6></div>
+          <div class="skill-card"><i class="fab fa-python" style="color:#3776AB"></i><h6>Python</h6></div>
         </div>
         <div class="col-6 col-md-4 col-lg-2">
-          <div class="skill-card"><i class="fas fa-server" style="color: #4caf50;"></i><h6>Minecraft</h6></div>
+          <div class="skill-card"><i class="fas fa-cubes" style="color:#22c55e"></i><h6>Minecraft</h6></div>
         </div>
       </div>
     </div>
@@ -240,19 +282,19 @@
 
   <section id="clients" class="py-5">
     <div class="container py-5">
-      <h2 class="display-6 mb-5">Selected Projects</h2>
+      <h2 class="display-6 mb-5">Selected Works</h2>
       <div class="row g-4">
 
         <!-- Jytic -->
         <div class="col-md-6 col-lg-4">
           <div class="client-card">
-            <div class="img-wrapper"><img src="https://cdn.discordapp.com/avatars/1421053008464187421/e77f90782a2f1d1c529b5897804c01fc.png" alt="Jytic"></div>
-            <h4 class="mb-1">Jytic</h4>
-            <p class="tag" style="font-size: 0.6rem;">Website for Jytic</p>
-            <p>Developed a high-performance web interface with custom functionality.</p>
+            <div class="img-wrapper"><img src="https://cdn.discordapp.com/avatars/1421053008464187421/e77f90782a2f1d1c529b5897804c01fc.png" alt="J"></div>
+            <span class="badge-pill">Website for Jytic</span>
+            <h4>Jytic</h4>
+            <p class="small opacity-75">Crafting a bespoke web experience tailored for specific functional needs.</p>
             <div class="mt-4 d-flex justify-content-between align-items-center">
-              <span class="small fw-bold" style="color: var(--accent)">Web Developer</span>
-              <a href="https://arafador.qzz.io/" target="_blank" class="btn-custom py-2 px-3">Visit</a>
+              <span class="small poppins-mix" style="color: var(--accent)">Role: Web Dev</span>
+              <a href="https://arafador.qzz.io/" target="_blank" class="btn-custom">Visit</a>
             </div>
           </div>
         </div>
@@ -260,13 +302,13 @@
         <!-- VoidVerse -->
         <div class="col-md-6 col-lg-4">
             <div class="client-card">
-              <div class="img-wrapper"><img src="https://vv.now.ct.ws/banner-vv.png" alt="VoidVerse"></div>
-              <h4 class="mb-1">VoidVerse</h4>
-              <p class="tag" style="font-size: 0.6rem;">Minecraft</p>
-              <p>Owner & Lead Developer. Managed logic and server-side environments.</p>
+              <div class="img-wrapper"><img src="https://vv.now.ct.ws/banner-vv.png" alt="V"></div>
+              <span class="badge-pill">Owner & Lead Developer</span>
+              <h4>VoidVerse</h4>
+              <p class="small opacity-75">Full-cycle Minecraft environment maintenance and web infrastructure.</p>
               <div class="mt-4 d-flex justify-content-between align-items-center">
-                <span class="small fw-bold" style="color: var(--accent)">Lead Developer</span>
-                <a href="https://now.ct.ws/" target="_blank" class="btn-custom py-2 px-3">Visit</a>
+                <span class="small poppins-mix" style="color: var(--accent)">Role: Full Stack</span>
+                <a href="https://now.ct.ws/" target="_blank" class="btn-custom">Visit</a>
               </div>
             </div>
         </div>
@@ -274,26 +316,13 @@
         <!-- AquaFrost -->
         <div class="col-md-6 col-lg-4">
             <div class="client-card">
-              <div class="img-wrapper"><img src="https://net.aquafrost.ct.ws/assets/aqualogo.png" alt="AquaFrost"></div>
-              <h4 class="mb-1">AquaFrost</h4>
-              <p class="tag" style="font-size: 0.6rem;">Software Tooling</p>
-              <p>Developing premium clients, mods, and specialized Minecraft tooling.</p>
+              <div class="img-wrapper"><img src="https://net.aquafrost.ct.ws/assets/aqualogo.png" alt="A"></div>
+              <span class="badge-pill">Owner & Developer</span>
+              <h4>AquaFrost</h4>
+              <p class="small opacity-75">Specialized Minecraft tooling, premium mods, and client-side optimization.</p>
               <div class="mt-4 d-flex justify-content-between align-items-center">
-                <span class="small fw-bold" style="color: var(--accent)">Owner & Dev</span>
-                <a href="https://org.aquafrost.ct.ws/" target="_blank" class="btn-custom py-2 px-3">Visit</a>
-              </div>
-            </div>
-        </div>
-
-        <!-- Nexon -->
-        <div class="col-md-6 col-lg-4">
-            <div class="client-card">
-              <div class="img-wrapper"><img src="https://cdn.discordapp.com/avatars/1453066578814963833/d90decb1919036ee53a889ff5c964060.png" alt="Nexon"></div>
-              <h4 class="mb-1">Nexon</h4>
-              <p class="tag" style="font-size: 0.6rem;">Discord Bot</p>
-              <p>Creator & Head Developer of Nexon Discord automated services.</p>
-              <div class="mt-4 text-center">
-                <span class="small fw-bold" style="color: var(--accent)">Head Developer</span>
+                <span class="small poppins-mix" style="color: var(--accent)">Role: Software Dev</span>
+                <a href="https://org.aquafrost.ct.ws/" target="_blank" class="btn-custom">Visit</a>
               </div>
             </div>
         </div>
@@ -301,13 +330,13 @@
         <!-- RuleZero -->
         <div class="col-md-6 col-lg-4">
           <div class="client-card">
-            <div class="img-wrapper"><img src="https://i.imgur.com/R9prWrw.png" alt="RuleZero"></div>
-            <h4 class="mb-1">RuleZero</h4>
-            <p class="tag" style="font-size: 0.6rem;">Minecraft</p>
-            <p>Managed full-scale web development and ensured technical stability.</p>
+            <div class="img-wrapper"><img src="https://i.imgur.com/R9prWrw.png" alt="R"></div>
+            <span class="badge-pill">Present</span>
+            <h4>RuleZero</h4>
+            <p class="small opacity-75">Technical stability management and web portal development.</p>
             <div class="mt-4 d-flex justify-content-between align-items-center">
-              <span class="small fw-bold" style="color: var(--accent)">Web Developer</span>
-              <a href="https://rulezero.ct.ws/" target="_blank" class="btn-custom py-2 px-3">Visit</a>
+                <span class="small poppins-mix" style="color: var(--accent)">Role: Web Dev</span>
+              <a href="https://rulezero.ct.ws/" target="_blank" class="btn-custom">Visit</a>
             </div>
           </div>
         </div>
@@ -315,15 +344,28 @@
         <!-- PC Games -->
         <div class="col-md-6 col-lg-4">
           <div class="client-card">
-            <div class="img-wrapper"><img src="https://cdn.discordapp.com/icons/1411719395469951052/eb3a05b620253d51f918a7688a276a3f.webp" alt="PC Games"></div>
-            <h4 class="mb-1">PC Games Hot Deals</h4>
-            <p class="tag" style="font-size: 0.6rem;">Business/E-commerce</p>
-            <p>Developed custom features for game deal tracking and performance.</p>
+            <div class="img-wrapper"><img src="https://cdn.discordapp.com/icons/1411719395469951052/eb3a05b620253d51f918a7688a276a3f.webp" alt="P"></div>
+            <span class="badge-pill">Business</span>
+            <h4>PC Games</h4>
+            <p class="small opacity-75">Developing performance-driven features for game deal tracking.</p>
             <div class="mt-4 d-flex justify-content-between align-items-center">
-              <span class="small fw-bold" style="color: var(--accent)">Web Developer</span>
-              <a href="https://hotdeals.ct.ws/" target="_blank" class="btn-custom py-2 px-3">Visit</a>
+                <span class="small poppins-mix" style="color: var(--accent)">Role: Web Dev</span>
+              <a href="https://hotdeals.ct.ws/" target="_blank" class="btn-custom">Visit</a>
             </div>
           </div>
+        </div>
+
+        <!-- Nexon -->
+        <div class="col-md-6 col-lg-4">
+            <div class="client-card">
+              <div class="img-wrapper"><img src="https://cdn.discordapp.com/avatars/1453066578814963833/d90decb1919036ee53a889ff5c964060.png" alt="N"></div>
+              <span class="badge-pill">Creator & Head Dev</span>
+              <h4>Nexon</h4>
+              <p class="small opacity-75">Discord automated services and backend bot engineering.</p>
+              <div class="mt-4">
+                <span class="small poppins-mix" style="color: var(--accent)">Head Developer</span>
+              </div>
+            </div>
         </div>
 
       </div>
@@ -332,34 +374,28 @@
 
   <section id="testimonials" class="py-5">
     <div class="container py-5">
-      <h2 class="display-6 mb-5 text-center">Testimonials</h2>
+      <h2 class="display-6 mb-5 text-center">Feedback</h2>
       <div class="row g-4">
         <div class="col-md-6">
-            <div class="testimonial-box text-center">
-              <div class="mb-3">
-                <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i>
-              </div>
-              <p class="fs-5 mb-4 fw-bold">"best Website i have seen So far"</p>
-              <div class="d-flex align-items-center justify-content-center gap-3">
-                <img src="https://cdn.discordapp.com/avatars/1421053008464187421/e77f90782a2f1d1c529b5897804c01fc.png" class="avatar-img" alt="Jytic">
-                <div class="text-start">
-                  <p class="mb-0 fw-bold">Jytic</p>
-                  <small class="text-muted">Jan 16, 2026</small>
+            <div class="testimonial-box">
+              <p class="fs-5 mb-4 poppins-mix">"best Website i have seen So far"</p>
+              <div class="d-flex align-items-center gap-3">
+                <img src="https://cdn.discordapp.com/avatars/1421053008464187421/e77f90782a2f1d1c529b5897804c01fc.png" class="avatar-img" alt="J">
+                <div>
+                  <h6 class="mb-0">Jytic</h6>
+                  <small class="opacity-50">Jan 16, 2026</small>
                 </div>
               </div>
             </div>
         </div>
         <div class="col-md-6">
-          <div class="testimonial-box text-center">
-            <div class="mb-3">
-              <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i>
-            </div>
-            <p class="fs-5 mb-4 fw-bold">"Best website developed by Tyler"</p>
-            <div class="d-flex align-items-center justify-content-center gap-3">
-              <img src="https://cdn.discordapp.com/avatars/1341979842614136862/fedbb312b91ccfd2b387c844a9956157.png" class="avatar-img" alt="Frost Walker">
-              <div class="text-start">
-                <p class="mb-0 fw-bold">Frost Walker</p>
-                <small class="text-muted">Jan 16, 2026</small>
+          <div class="testimonial-box">
+            <p class="fs-5 mb-4 poppins-mix">"Best website developed by Tyler"</p>
+            <div class="d-flex align-items-center gap-3">
+              <img src="https://cdn.discordapp.com/avatars/1341979842614136862/fedbb312b91ccfd2b387c844a9956157.png" class="avatar-img" alt="F">
+              <div>
+                <h6 class="mb-0">Frost Walker</h6>
+                <small class="opacity-50">Jan 16, 2026</small>
               </div>
             </div>
           </div>
@@ -370,27 +406,33 @@
 
   <footer class="py-5 border-top border-white border-opacity-10 text-center">
     <div class="container">
-      <p class="fw-bold">© 2024 — 2026 Tyler. Built with precision ∙ All rights reserved.</p>
+      <p class="fw-bold mb-1 poppins-mix">© 2024 — 2026 Tyler. Built with precision <span id="easterEggTrigger" style="cursor:help">∙</span> All rights reserved.</p>
     </div>
   </footer>
 
   <div class="modal fade" id="contactModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content bg-dark border-secondary" style="border-radius: 24px;">
-        <div class="modal-body text-center py-5">
-          <p class="fw-bold mb-1">Add me on Discord:</p>
+      <div class="modal-content text-center py-5">
+          <p class="fw-bold mb-1 poppins-mix">Let's talk on Discord:</p>
           <h3 class="fw-bold mb-4">
             <span id="discordUser">reallytyler</span>
             <i class="far fa-copy ms-2" id="copyDiscordBtn" style="cursor:pointer; color:var(--accent);"></i>
           </h3>
-          <small id="copyToast" class="text-success fw-bold" style="visibility: hidden;">Copied!</small>
-        </div>
+          <small id="copyToast" style="visibility: hidden;">Copied!</small>
       </div>
     </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    // EASTER EGG: Console Message
+    console.log("%c   _______  _____    _______  ______ \n  |__   __||_   _|  |__   __||  ____|\n     | |     | |       | |   | |__   \n     | |     | |       | |   |  __|  \n     | |    _| |_      | |   | |____ \n     |_|   |_____|     |_|   |______|", "color: #bc77ff; font-weight: bold;");
+    console.log("%cBuilt by Tyler. Hacking attempts will be ignored, but coffee is welcome.", "color: #888;");
+
+    // EASTER EGG: Hover Title
+    document.getElementById('easterEggTrigger').title = "Secret found: You have a good eye!";
+
+    // Theme Logic
     const themeToggle = document.getElementById('themeToggle');
     const themeToggleMobile = document.getElementById('themeToggleMobile');
     const html = document.documentElement;
@@ -407,6 +449,7 @@
     themeToggle.addEventListener('click', switchTheme);
     themeToggleMobile.addEventListener('click', switchTheme);
 
+    // Discord Copy
     document.getElementById('copyDiscordBtn').addEventListener('click', () => {
       navigator.clipboard.writeText('reallytyler');
       const toast = document.getElementById('copyToast');
