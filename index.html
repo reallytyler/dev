@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 
@@ -9,157 +10,165 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&family=Space+Grotesk:wght@300;500;700&family=Poppins:ital,wght@0,700;1,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
   <style>
     :root {
       --bg: #050505;
-      --card-bg: rgba(13, 13, 13, 0.7);
+      --card-bg: #0d0d0d;
       --accent: #bc77ff; 
-      --accent-glow: rgba(188, 119, 255, 0.3);
-      --text-main: #ffffff;
-      --text-dim: rgba(255, 255, 255, 0.6);
-      --border: rgba(255, 255, 255, 0.08);
-      --glass: rgba(255, 255, 255, 0.03);
+      --accent-glow: rgba(188, 119, 255, 0.4);
+      --text-white: #ffffff;
+      --border: rgba(255, 255, 255, 0.1);
     }
 
     body {
       background-color: var(--bg);
-      background-image: 
-        radial-gradient(circle at 50% -20%, rgba(188, 119, 255, 0.15), transparent 40%),
-        url("https://www.transparenttextures.com/patterns/carbon-fibre.png"); /* Subtle texture */
-      color: var(--text-main);
+      color: var(--text-white);
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
-      selection-background: var(--accent);
+      line-height: 1.6;
     }
 
-    /* Typography */
-    h1, h2, h3, h4, .navbar-brand { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
-    .mono { font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; }
+    /* Force Pure White Text Visibility */
+    h1, h2, h3, h4, h5, h6, p, span, div, small, .navbar-brand, .nav-link { 
+      color: #ffffff !important; 
+      opacity: 1 !important; 
+    }
 
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+    h1, h2, h3, h4, .navbar-brand { font-family: 'Space Grotesk', sans-serif; }
 
-    /* Navbar */
+    /* Floating Navbar */
     .navbar {
-      background: rgba(5, 5, 5, 0.7);
-      backdrop-filter: blur(12px);
+      background: rgba(5, 5, 5, 0.8);
+      backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
-      padding: 1.2rem 0;
+      padding: 1rem 0;
     }
-    .nav-link { 
-        color: var(--text-dim) !important; 
-        font-size: 0.9rem; 
-        transition: 0.3s; 
-        font-weight: 500;
-    }
-    .nav-link:hover { color: var(--accent) !important; }
 
-    /* Hero Section */
-    .hero { padding: 200px 0 120px; position: relative; }
-    .hero-title { 
-      font-size: clamp(3.5rem, 12vw, 7.5rem); 
-      line-height: 0.85; 
-      letter-spacing: -0.05em; 
-      margin-bottom: 1.5rem;
-    }
+    .navbar-brand span { color: var(--accent) !important; font-weight: 800; }
+
+    /* Hero Section with Live Lanyard */
+    .hero { padding: 180px 0 100px; position: relative; }
+    .hero-title { font-size: clamp(3.5rem, 11vw, 6.5rem); line-height: 0.8; letter-spacing: -4px; margin-bottom: 2rem; }
     .hero-title span { 
-      background: linear-gradient(135deg, #fff 30%, var(--accent) 100%);
+      background: linear-gradient(to bottom right, #ffffff 40%, var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      display: block;
     }
 
-    .status-pill {
-      background: var(--glass);
+    .discord-presence {
+      background: var(--card-bg);
       border: 1px solid var(--border);
-      padding: 6px 14px;
-      border-radius: 100px;
+      padding: 8px 16px;
+      border-radius: 12px;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       margin-bottom: 2rem;
-      backdrop-filter: blur(5px);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.85rem;
     }
-    .pulse-dot {
-      width: 8px; height: 8px; background: #22c55e; border-radius: 50%;
-      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); } 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); } }
 
-    /* Skill Cards */
-    .skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 20px; }
-    .skill-item {
+    .presence-dot { width: 10px; height: 10px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 10px #22c55e; }
+
+    /* BIG ICONS SECTION */
+    .skill-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 30px 20px;
+      padding: 3.5rem 1rem;
+      border-radius: 28px;
       text-align: center;
-      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    .skill-item:hover {
+    .skill-card i { font-size: 5rem !important; display: block; margin-bottom: 1.5rem; transition: 0.3s; }
+    .skill-card:hover {
       border-color: var(--accent);
-      background: rgba(188, 119, 255, 0.05);
-      transform: translateY(-5px);
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 20px 50px -10px var(--accent-glow);
     }
-    .skill-item i { font-size: 2.5rem; margin-bottom: 15px; display: block; }
 
-    /* Project Nodes */
-    .project-card {
+    /* PROJECT CARDS: ENGINEERED LOOK */
+    .project-node {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 24px;
-      overflow: hidden;
+      border-radius: 30px;
+      padding: 30px;
       height: 100%;
-      transition: 0.4s ease;
       position: relative;
+      transition: 0.3s;
+      overflow: hidden;
     }
-    .project-card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 20px 40px -20px var(--accent-glow);
-    }
-    .project-img {
-      width: 100%; height: 220px; object-fit: cover;
-      border-bottom: 1px solid var(--border);
-      filter: grayscale(0.5); transition: 0.5s;
-    }
-    .project-card:hover .project-img { filter: grayscale(0); transform: scale(1.05); }
-    
-    .project-body { padding: 25px; }
-    .tag {
-      font-size: 0.65rem; font-weight: 700; padding: 4px 10px; border-radius: 6px;
-      background: rgba(188, 119, 255, 0.1); color: var(--accent);
-      text-transform: uppercase; margin-bottom: 12px; display: inline-block;
+    .project-node:hover { border-color: var(--accent); }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      opacity: 0.6;
     }
 
-    /* Action Buttons */
-    .btn-custom {
-      background: #fff; color: #000; border: none;
-      padding: 12px 28px; border-radius: 12px; font-weight: 700;
-      transition: 0.3s; text-decoration: none; display: inline-block;
+    .img-frame {
+      width: 100%; height: 230px; border-radius: 18px; overflow: hidden; margin-bottom: 25px; border: 1px solid var(--border);
     }
-    .btn-custom:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
+    .img-frame img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+    .project-node:hover img { transform: scale(1.08); }
 
-    /* Footer */
-    footer { border-top: 1px solid var(--border); padding: 80px 0 40px; }
-    
-    /* Socials */
-    .social-link {
-      width: 50px; height: 50px; border-radius: 12px; background: var(--glass);
-      border: 1px solid var(--border); display: flex; align-items: center;
-      justify-content: center; color: #fff; transition: 0.3s;
+    .role-tag {
+      background: rgba(188, 119, 255, 0.15);
+      border: 1px solid var(--accent);
+      color: var(--accent) !important;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      padding: 4px 12px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 10px;
     }
-    .social-link:hover { background: var(--accent); color: #fff; transform: rotate(-5deg); }
 
-    .stat-box { border-left: 1px solid var(--border); padding-left: 20px; }
+    .btn-action {
+      background: #ffffff;
+      color: #000000 !important;
+      font-weight: 800;
+      border-radius: 12px;
+      padding: 10px 24px;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.3s;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .btn-action:hover { background: var(--accent); color: #fff !important; transform: translateX(5px); }
+
+    .social-hex {
+      width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; border-radius: 15px; background: var(--card-bg); border: 1px solid var(--border); transition: 0.3s;
+    }
+    .social-hex:hover { background: var(--accent); transform: scale(1.1) rotate(8deg); }
+
+    /* Testimonials: "The Log" */
+    .log-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      padding: 45px;
+      text-align: center;
+    }
+    .log-box p { font-family: 'Poppins', sans-serif; font-style: italic; font-size: 1.5rem; margin-bottom: 2rem; }
+
+    .avatar-circle {
+      width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent);
+    }
+
+    footer { padding: 60px 0; border-top: 1px solid var(--border); font-family: 'JetBrains Mono', monospace; }
+
+    #copyToast { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--accent) !important; }
   </style>
 </head>
 
@@ -167,169 +176,223 @@
 
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">TYLER<span style="color:var(--accent)">.</span>DEV</a>
-      <div class="ms-auto d-flex align-items-center gap-4">
-        <div class="d-none d-lg-flex gap-4">
-          <a class="nav-link mono" href="#skills">01. Skills</a>
-          <a class="nav-link mono" href="#work">02. Registry</a>
-          <a class="nav-link mono" href="#testimonials">03. Logs</a>
-        </div>
-        <a href="#" class="btn-custom py-2 px-3 fs-7" data-bs-toggle="modal" data-bs-target="#contactModal">Connect</a>
+      <a class="navbar-brand" href="https://tyler.ct.ws/dev/">TYLER<span>.</span>DEV</a>
+      <div class="ms-auto d-flex align-items-center gap-3">
+        <ul class="navbar-nav d-none d-lg-flex flex-row gap-4">
+          <li><a class="nav-link" href="#skills">/skills</a></li>
+          <li><a class="nav-link" href="#clients">/work</a></li>
+          <li><a class="nav-link" href="#testimonials">/reviews</a></li>
+        </ul>
+        <button id="themeToggle" class="btn"><i class="fas fa-moon"></i></button>
       </div>
     </div>
   </nav>
 
   <section class="hero text-center">
-    <div class="container" data-aos="fade-up">
-      <div class="status-pill">
-        <div class="pulse-dot"></div>
-        <span class="mono" style="font-size: 0.7rem;">System Status: <span style="color:var(--accent)">Active</span></span>
+    <div class="container">
+      <div class="discord-presence">
+        <div class="presence-dot"></div>
+        <span>Live System Status: <strong style="color:var(--accent)!important">reallytyler</strong> (Online)</span>
       </div>
-      
       <h1 class="hero-title">Logic<br><span>Architecture</span></h1>
-      
-      <p class="lead mx-auto mb-5" style="max-width: 600px; color: var(--text-dim);">
-        Specializing in high-performance web environments and optimized game logic for the next generation of digital infrastructure.
+      <p class="fs-4 mx-auto mb-5 poppins-mix" style="max-width: 650px;">
+        Building <span class="poppins-mix" style="color: var(--accent)!important;">responsive logic</span> and optimized server environments for the next generation of web and gaming.
       </p>
-
-      <div class="d-flex justify-content-center gap-4 mb-5">
-        <div class="stat-box text-start">
-          <h3 class="mb-0">05+</h3>
-          <span class="mono" style="opacity: 0.5;">Deployments</span>
+      
+      <div class="d-flex justify-content-center gap-5 mb-5">
+        <div class="text-center">
+          <h2 class="stat-number mb-0">5+</h2>
+          <small style="font-family: 'JetBrains Mono'; opacity: 0.6;">MODULES_COMPLETED</small>
         </div>
-        <div class="stat-box text-start">
-          <h3 class="mb-0">99.9</h3>
-          <span class="mono" style="opacity: 0.5;">Uptime_Pct</span>
+        <div style="width: 2px; background: var(--border);"></div>
+        <div class="text-center">
+          <h2 class="stat-number mb-0">2+</h2>
+          <small style="font-family: 'JetBrains Mono'; opacity: 0.6;">YEARS_UPTIME</small>
         </div>
       </div>
 
       <div class="d-flex justify-content-center gap-3">
-        <a href="https://github.com/reallytyler" class="social-link"><i class="fab fa-github"></i></a>
-        <a href="https://codeberg.org/reallytyler" class="social-link"><i class="fas fa-code-branch"></i></a>
-        <a href="#" class="social-link" data-bs-toggle="modal" data-bs-target="#contactModal"><i class="fab fa-discord"></i></a>
+        <a href="https://github.com/reallytyler" target="_blank" class="social-hex"><i class="fab fa-github fa-lg"></i></a>
+        <a href="https://codeberg.org/reallytyler" target="_blank" class="social-hex"><i class="fas fa-code-branch fa-lg"></i></a>
+        <a href="https://modrinth.com/user/tylerxd" target="_blank" class="social-hex">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Modrinth_Logo.webp" style="width:25px" alt="Mod">
+        </a>
+        <a href="#" class="social-hex" data-bs-toggle="modal" data-bs-target="#contactModal"><i class="fab fa-discord fa-lg"></i></a>
       </div>
     </div>
   </section>
 
   <section id="skills" class="py-5">
-    <div class="container">
-      <div class="mb-5" data-aos="fade-right">
-        <span class="mono" style="color:var(--accent)">[ Capabilities ]</span>
-        <h2 class="display-5">Technical Stack</h2>
-      </div>
-      
-      <div class="skill-grid">
-        <div class="skill-item" data-aos="zoom-in" data-aos-delay="100">
-          <i class="fab fa-html5" style="color:#E44D26"></i>
-          <span class="mono">Frontend</span>
+    <div class="container py-5">
+      <h2 class="display-6 mb-5 text-center poppins-mix">/ Technical Core</h2>
+      <div class="row g-4 justify-content-center">
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="skill-card"><i class="fab fa-html5" style="color:#ff6d00"></i><h6>HTML</h6></div>
         </div>
-        <div class="skill-item" data-aos="zoom-in" data-aos-delay="200">
-          <i class="fab fa-js" style="color:#F7DF1E"></i>
-          <span class="mono">JavaScript</span>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="skill-card"><i class="fab fa-css3-alt" style="color:#039be5"></i><h6>CSS</h6></div>
         </div>
-        <div class="skill-item" data-aos="zoom-in" data-aos-delay="300">
-          <i class="fab fa-python" style="color:#3776AB"></i>
-          <span class="mono">Python</span>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="skill-card"><i class="fab fa-js" style="color:#ffd600"></i><h6>JS</h6></div>
         </div>
-        <div class="skill-item" data-aos="zoom-in" data-aos-delay="400">
-          <i class="fas fa-terminal" style="color:var(--accent)"></i>
-          <span class="mono">Systems</span>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="skill-card"><i class="fab fa-python" style="color: #4b8bbe;"></i><h6>Python</h6></div>
         </div>
-        <div class="skill-item" data-aos="zoom-in" data-aos-delay="500">
-          <i class="fas fa-cubes" style="color:#4caf50"></i>
-          <span class="mono">Game Logic</span>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="skill-card"><i class="fas fa-server" style="color: #4caf50;"></i><h6>Minecraft</h6></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="work" class="py-5 bg-black-50">
-    <div class="container">
-      <div class="d-flex justify-content-between align-items-end mb-5" data-aos="fade-up">
-        <div>
-          <span class="mono" style="color:var(--accent)">[ Project Registry ]</span>
-          <h2 class="display-5">Selected Works</h2>
-        </div>
-        <p class="mono d-none d-md-block" style="opacity: 0.4;">Total_Nodes: 06</p>
-      </div>
-
+  <section id="clients" class="py-5">
+    <div class="container py-5">
+      <h2 class="display-6 mb-5 poppins-mix">/ Project Registry</h2>
       <div class="row g-4">
-        <!-- Project 1 -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="project-card">
-            <img src="https://cdn.discordapp.com/avatars/1421053008464187421/e77f90782a2f1d1c529b5897804c01fc.png" class="project-img" alt="Jytic">
-            <div class="project-body">
-              <span class="tag">Web Architecture</span>
-              <h4 class="mb-3">Jytic Official</h4>
-              <p class="small text-secondary mb-4">A high-performance interface built for speed and functional clarity.</p>
-              <a href="https://arafador.qzz.io/" class="btn-custom w-100 text-center">Open Link</a>
-            </div>
+
+        <!-- Jytic -->
+        <div class="col-md-6 col-lg-4">
+          <div class="project-node">
+            <div class="project-header"><span>MANIFEST-01</span> <span>v2.0</span></div>
+            <div class="img-frame"><img src="https://cdn.discordapp.com/avatars/1421053008464187421/e77f90782a2f1d1c529b5897804c01fc.png" alt="J"></div>
+            <span class="role-tag">Web Developer</span>
+            <h4 class="mb-2">Jytic Official</h4>
+            <p class="small mb-4">Architecting a high-performance web interface tailored for functional excellence.</p>
+            <a href="https://arafador.qzz.io/" target="_blank" class="btn-action">EXEC_VISIT</a>
           </div>
         </div>
 
-        <!-- Project 2 -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="project-card">
-              <img src="https://vv.now.ct.ws/banner-vv.png" class="project-img" alt="VoidVerse">
-              <div class="project-body">
-                <span class="tag">Full Stack + Game</span>
-                <h4 class="mb-3">VoidVerse</h4>
-                <p class="small text-secondary mb-4">Comprehensive Minecraft ecosystem and web management infrastructure.</p>
-                <a href="https://now.ct.ws/" class="btn-custom w-100 text-center">Open Link</a>
-              </div>
+        <!-- VoidVerse -->
+        <div class="col-md-6 col-lg-4">
+            <div class="project-node">
+              <div class="project-header"><span>MANIFEST-02</span> <span>v1.5</span></div>
+              <div class="img-frame"><img src="https://vv.now.ct.ws/banner-vv.png" alt="V"></div>
+              <span class="role-tag">Owner & Lead Dev</span>
+              <h4 class="mb-2">VoidVerse</h4>
+              <p class="small mb-4">Minecraft environment maintenance and full-stack web infrastructure development.</p>
+              <a href="https://now.ct.ws/" target="_blank" class="btn-action">EXEC_VISIT</a>
             </div>
         </div>
 
-        <!-- Project 3 -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="project-card">
-              <img src="https://net.aquafrost.ct.ws/assets/aqualogo.png" class="project-img" alt="AquaFrost">
-              <div class="project-body">
-                <span class="tag">Mod Engineering</span>
-                <h4 class="mb-3">AquaFrost</h4>
-                <p class="small text-secondary mb-4">Premium optimization tools and modding frameworks for game clients.</p>
-                <a href="https://org.aquafrost.ct.ws/" class="btn-custom w-100 text-center">Open Link</a>
+        <!-- AquaFrost -->
+        <div class="col-md-6 col-lg-4">
+            <div class="project-node">
+              <div class="project-header"><span>MANIFEST-03</span> <span>v3.1</span></div>
+              <div class="img-frame"><img src="https://net.aquafrost.ct.ws/assets/aqualogo.png" alt="A"></div>
+              <span class="role-tag">Owner & Developer</span>
+              <h4 class="mb-2">AquaFrost</h4>
+              <p class="small mb-4">Specialized Minecraft tooling, premium mod engineering, and optimization.</p>
+              <a href="https://org.aquafrost.ct.ws/" target="_blank" class="btn-action">EXEC_VISIT</a>
+            </div>
+        </div>
+
+        <!-- RuleZero -->
+        <div class="col-md-6 col-lg-4">
+          <div class="project-node">
+            <div class="project-header"><span>MANIFEST-04</span> <span>v1.0</span></div>
+            <div class="img-frame"><img src="https://i.imgur.com/R9prWrw.png" alt="R"></div>
+            <span class="role-tag">Web Developer</span>
+            <h4 class="mb-2">RuleZero</h4>
+            <p class="small mb-4">Managed full-scale web development and ensured core technical stability.</p>
+            <a href="https://rulezero.ct.ws/" target="_blank" class="btn-action">EXEC_VISIT</a>
+          </div>
+        </div>
+
+        <!-- PC Games -->
+        <div class="col-md-6 col-lg-4">
+          <div class="project-node">
+            <div class="project-header"><span>MANIFEST-05</span> <span>v1.2</span></div>
+            <div class="img-frame"><img src="https://cdn.discordapp.com/icons/1411719395469951052/eb3a05b620253d51f918a7688a276a3f.webp" alt="P"></div>
+            <span class="role-tag">Web Developer</span>
+            <h4 class="mb-2">Hot Deals</h4>
+            <p class="small mb-4">Development of custom features for high-traffic game deal tracking.</p>
+            <a href="https://hotdeals.ct.ws/" target="_blank" class="btn-action">EXEC_VISIT</a>
+          </div>
+        </div>
+
+        <!-- Nexon -->
+        <div class="col-md-6 col-lg-4">
+            <div class="project-node">
+              <div class="project-header"><span>MANIFEST-06</span> <span>BETA</span></div>
+              <div class="img-frame"><img src="https://cdn.discordapp.com/avatars/1453066578814963833/d90decb1919036ee53a889ff5c964060.png" alt="N"></div>
+              <span class="role-tag">Creator & Head Dev</span>
+              <h4 class="mb-2">Nexon Bot</h4>
+              <p class="small mb-4">Discord automation engine and backend bot infrastructure services.</p>
+              <div class="text-center mt-3"><span style="color:var(--accent)!important; font-weight:800; font-family:'JetBrains Mono'">[ STATUS: OFFLINE ]</span></div>
+            </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="py-5">
+    <div class="container py-5">
+      <h2 class="display-6 mb-5 text-center poppins-mix">/ Terminal Feedback</h2>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-6">
+            <div class="log-box">
+              <p>"best Website i have seen So far"</p>
+              <div class="d-flex align-items-center justify-content-center gap-3">
+                <img src="https://cdn.discordapp.com/avatars/1421053008464187421/e77f90782a2f1d1c529b5897804c01fc.png" class="avatar-circle" alt="J">
+                <div class="text-start">
+                  <h6 class="mb-0">Jytic</h6>
+                  <small style="opacity: 0.5;">Verified Client</small>
+                </div>
               </div>
             </div>
+        </div>
+        <div class="col-md-6">
+          <div class="log-box">
+            <p>"Best website developed by Tyler"</p>
+            <div class="d-flex align-items-center justify-content-center gap-3">
+              <img src="https://cdn.discordapp.com/avatars/1341979842614136862/fedbb312b91ccfd2b387c844a9956157.png" class="avatar-circle" alt="F">
+              <div class="text-start">
+                <h6 class="mb-0">Frost Walker</h6>
+                <small style="opacity: 0.5;">Verified Client</small>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="text-center">
+  <footer class="py-5 text-center">
     <div class="container">
-      <h2 class="navbar-brand mb-4">TYLER<span style="color:var(--accent)">.</span>DEV</h2>
-      <p class="mono mb-4" style="opacity: 0.5;">&copy; 2024 — 2026 / Build 2.0.4 / All Rights Reserved.</p>
-      <div class="d-flex justify-content-center gap-3">
-        <div class="mono" style="font-size: 0.65rem; border: 1px solid var(--border); padding: 5px 10px; border-radius: 5px;">
-            LATENCY: 24ms
-        </div>
-        <div class="mono" style="font-size: 0.65rem; border: 1px solid var(--border); padding: 5px 10px; border-radius: 5px;">
-            LOC: REMOTE
-        </div>
-      </div>
+      <p class="mb-0 fw-bold">© 2024 — 2026 Tyler. Built with precision <span style="color:var(--accent)!important">∙</span> All rights reserved.</p>
+      <div class="mt-2"><small style="opacity: 0.4;">SYS_STATUS: OPTIMAL</small></div>
     </div>
   </footer>
 
-  <!-- Modal -->
   <div class="modal fade" id="contactModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content bg-dark border-secondary p-5" style="border-radius: 24px; border: 1px solid var(--border) !important;">
-          <span class="mono mb-2" style="color:var(--accent)">// Handshake</span>
-          <h4 class="mb-4">Discord Connection</h4>
-          <div class="d-flex align-items-center justify-content-between bg-black p-3 rounded-3 border border-secondary">
-            <code class="text-white fs-5" id="discordUser">reallytyler</code>
-            <button class="btn text-accent" id="copyDiscordBtn" style="color:var(--accent)"><i class="far fa-copy"></i></button>
-          </div>
-          <small id="copyToast" class="mono mt-2" style="color:var(--accent); visibility: hidden;">System: ID_COPIED</small>
+      <div class="modal-content bg-dark border-secondary p-5" style="border-radius: 30px;">
+          <h4 class="mb-4 poppins-mix">Open Terminal Connection:</h4>
+          <h3 class="fw-bold mb-4">
+            <span id="discordUser">reallytyler</span>
+            <i class="far fa-copy ms-2" id="copyDiscordBtn" style="cursor:pointer; color:var(--accent);"></i>
+          </h3>
+          <small id="copyToast" style="visibility: hidden;">USERNAME_COPIED</small>
       </div>
     </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 800, once: true });
+    // Console Personality
+    console.log("%c   TYLER.DEV   ", "color: #000; background: #bc77ff; padding: 5px; font-weight: bold; border-radius: 5px;");
+    console.log("%cLogic Architecture Status: Optimal. Easter Egg found. Welcome, developer.", "color: #bc77ff;");
+
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+
+    themeToggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      themeToggle.innerHTML = next === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+    });
 
     document.getElementById('copyDiscordBtn').addEventListener('click', () => {
       navigator.clipboard.writeText('reallytyler');
@@ -338,5 +401,6 @@
       setTimeout(() => toast.style.visibility = 'hidden', 2000);
     });
   </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"554340bc7a964fb88ea4dc71fb8c1a07","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
